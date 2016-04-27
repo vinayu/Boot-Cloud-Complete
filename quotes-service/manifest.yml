@@ -3,10 +3,11 @@ applications:
 
 - name: quotes-service
   host: quotes-service
+  buildpack: java_buildpack_offline
   memory: 512M
-
   path: target/quotes-service-0.0.1-SNAPSHOT.jar
-
+  services:
+   - service-registry
+   - config-server
   env:
-   JPB_CONFIG_DEBUG: '{enabled: true, port: 8000}'
-   JAVA_OPTS: "-Xdebug -Xrunjdwp:server=y,transport=dt_socket,suspend=n,address=8000"
+   CF_TARGET: https://api.pcf10.cloud.fe.pivotal.io

@@ -1,0 +1,5 @@
+spring:
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
