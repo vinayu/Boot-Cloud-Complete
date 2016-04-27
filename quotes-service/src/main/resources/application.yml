@@ -1,0 +1,4 @@
+server:
+  port: 9100
+yahoo:
+  endpoint: http://download.finance.yahoo.com/d/quotes.csv?s={symbol}&f=snac1gh
