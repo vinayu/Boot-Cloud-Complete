@@ -7,7 +7,7 @@ spring:
   profiles:
     active: development
   jpa:
-    database: H2
+    database: mysql
     hibernate:
       ddl-auto: create-drop
 

@@ -1,0 +1,10 @@
+---
+applications:
+
+- name: details-service
+  host: details-service-vinay
+  path: target/details.service-0.0.1-SNAPSHOT.jar
+  env:
+    CF_TARGET: https://api.pcf10.cloud.fe.pivotal.io
+    details.companiesService: http://companies-service-vinay.pcf10.cloud.fe.pivotal.io
+    details.quotesService: http://quotes-service-vinay.pcf10.cloud.fe.pivotal.io
