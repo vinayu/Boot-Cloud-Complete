@@ -30,12 +30,11 @@ public class QuotesService {
 	private AtomicLong counter = new AtomicLong(0);
 	private AtomicLong cumulativeTime = new AtomicLong(0);
 
+	@Value("${quotes.fetch.size}")
+	Integer fetchSize;
 
 	@Value("${yahoo.endpoint}")
 	private String yahooEndpoint;
-
-	@Value("${quotes.fetch.size}")
-	Integer fetchSize;
 
 	@Autowired
 	public QuotesService(RestTemplate client, CounterService counterService, GaugeService gaugeService) {
@@ -57,8 +56,15 @@ public class QuotesService {
 		return quote;
 	}
 
+	@RequestMapping(value = "/quotes/config")
+	public String config(){
+		return String.valueOf(fetchSize);
+	}
+
 
 	public Long averageResponseTime(){
+		if(counter.get() == 0)
+			return 0L;
 		return (Long)cumulativeTime.get()/counter.get();
 	}
 

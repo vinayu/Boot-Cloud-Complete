@@ -1,10 +1,12 @@
 package io.pivotal.boot.samples.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.endpoint.PublicMetrics;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.actuate.metrics.Metric;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Component;
 public class YahooHealthIndicator implements HealthIndicator {
 
 	private QuotesService service;
+
+
 
 	@Autowired
 	public YahooHealthIndicator(QuotesService service) {
